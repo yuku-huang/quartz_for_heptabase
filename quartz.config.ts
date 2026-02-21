@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "zh-TW",
-    baseUrl: "quartz.jzhao.xyz",  // ← 部署後請改成你的實際網域
+    baseUrl: "yuku-huang.github.io/quartz_for_heptabase",  // ← 部署後請改成你的實際網域
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
     theme: {
