@@ -14,11 +14,11 @@ heptabase_id: d47a1427-3c90-4ce2-9bf3-b7fab60cb05e
 
 - [[其他/dc4564f8-d8e1-4f96-a6d9-cdac46a35638|故事從這裡開始]]
 
-- [本站使用方法](https://app.heptabase.com/1073eaff-d09e-4b1b-a27a-29250ff26aa9/card/ca82336a-6341-465d-a303-869b760a43b2)
+- [[其他/ca82336a-6341-465d-a303-869b760a43b2|使用方法]]
 
-- [我的文章](https://app.heptabase.com/1073eaff-d09e-4b1b-a27a-29250ff26aa9/card/75b7d7e0-faf3-44f9-96ec-518a0001ccd7)
+- [[其他/75b7d7e0-faf3-44f9-96ec-518a0001ccd7|部落格]]
 
-- [我所關注的主題](https://app.heptabase.com/1073eaff-d09e-4b1b-a27a-29250ff26aa9/card/a2e0049e-7f6d-40e8-a94c-12948c1f52cf)
+- [[其他/a2e0049e-7f6d-40e8-a94c-12948c1f52cf|我所關注的主題]]
 
 - 後記-[[其他/4ec26fa6-b077-4ea5-888e-55bc0b85d54d|撰寫此站的需要解決的難點]]
 
@@ -46,7 +46,7 @@ heptabase_id: d47a1427-3c90-4ce2-9bf3-b7fab60cb05e
 
 - [[其他/01bba1fe-f3df-4e02-b6d1-048f344b39a0|第二章 回到真實世界 - 人生主動性]]
 
-[看更多我的文章→](https://app.heptabase.com/1073eaff-d09e-4b1b-a27a-29250ff26aa9/card/75b7d7e0-faf3-44f9-96ec-518a0001ccd7)
+[[其他/75b7d7e0-faf3-44f9-96ec-518a0001ccd7|部落格]]
 
 ---
 

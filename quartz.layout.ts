@@ -58,10 +58,13 @@ export const defaultContentPageLayout: PageLayout = {
       ],
     }),
     customExplorer,
+    // 閱讀模式下顯示的目錄（平時隱藏）
+    Component.TableOfContents(),
   ],
   right: [
-    Component.Graph(),
+    // 目錄在關係圖譜上方
     Component.DesktopOnly(Component.TableOfContents()),
+    Component.Graph(),
     Component.Backlinks(),
   ],
 }

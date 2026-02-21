@@ -229,6 +229,10 @@ function tiptapToMarkdown(node, cardPathMap = {}, depth = 0) {
         case 'date':
             return node.attrs?.date || ''
 
+        case 'hardBreak':
+        case 'hard_break':
+            return '<br>\n'
+
         case 'math_inline':
             return `$${children}$`
 
@@ -245,10 +249,22 @@ function tiptapToMarkdown(node, cardPathMap = {}, depth = 0) {
                     case 'link': {
                         const href = mark.attrs?.href || mark.attrs?.['data-internal-href'] || ''
                         if (href.startsWith('meta://card/')) {
+                            // meta://card/<id>  →  internal wikilink
                             const cid = href.replace('meta://card/', '')
                             const ctitle = cardPathMap[cid]?.title || text
                             const cpath = cardPathMap[cid]?.path || cid
                             text = `[[${cpath}|${ctitle}]]`
+                        } else if (href.includes('app.heptabase.com') && href.includes('/card/')) {
+                            // https://app.heptabase.com/.../card/<uuid>  →  internal wikilink
+                            const m = href.match(/\/card\/([0-9a-f-]{36})/i)
+                            if (m) {
+                                const cid = m[1]
+                                const ctitle = cardPathMap[cid]?.title || text
+                                const cpath = cardPathMap[cid]?.path || cid
+                                text = `[[${cpath}|${ctitle}]]`
+                            } else {
+                                text = `[${text}](${href})`
+                            }
                         } else if (href) {
                             text = `[${text}](${href})`
                         }

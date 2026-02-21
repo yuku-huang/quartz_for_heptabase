@@ -1,3 +1,61 @@
 @use "./base.scss";
 
-// put your custom CSS here!
+// ─── 1. 減少頂部空白 ─────────────────────────────────────────────────────────
+// base.scss 用 $topSpacing: 6rem 作為 sidebar padding-top 和 page-header margin-top
+// 這裡覆蓋為較小值
+
+.page>#quartz-body {
+    padding-top: 0.5rem;
+
+    .sidebar {
+        padding-top: 1.5rem;
+    }
+
+    .page-header {
+        margin-top: 1.5rem;
+    }
+}
+
+// ─── 2. 左側目錄：平時隱藏，閱讀模式才顯示 ───────────────────────────────────
+
+// 左側的 toc 元素平時隱藏
+.sidebar.left .toc {
+    display: none;
+}
+
+// ─── 3. 閱讀模式覆蓋 ──────────────────────────────────────────────────────────
+// Quartz 在 :root 設置 reader-mode="on"
+// 原本只讓兩個 sidebar opacity: 0，我們要更進一步：
+// 隱藏右側欄、收起左側 Explorer、顯示左側 TOC、擴展內容寬度
+
+:root[reader-mode="on"] {
+
+    // 右側欄：保持存在但收窄為薄邊，內容隱藏
+    .sidebar.right {
+        opacity: 0 !important;
+        width: 0 !important;
+        min-width: 0 !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none;
+    }
+
+    // 左側欄保持可見（不透明），但隱藏 Explorer、顯示 TOC
+    .sidebar.left {
+        opacity: 1 !important;
+
+        &:hover {
+            opacity: 1 !important;
+        }
+
+        // 隱藏 Explorer
+        .explorer {
+            display: none;
+        }
+
+        // 顯示 TOC（取代 Explorer 位置）
+        .toc {
+            display: block;
+        }
+    }
+}
