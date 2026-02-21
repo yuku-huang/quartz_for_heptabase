@@ -1,0 +1,65 @@
+name: Deploy Quartz with Heptabase
+
+on:
+  # 每 12 小時自動執行
+  schedule:
+    - cron: '0 0,12 * * *'   # UTC 0:00 & 12:00（台灣時間 08:00 & 20:00）
+  # 支援手動觸發
+  workflow_dispatch:
+  # push 到 main 時也觸發
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時只允許一個 deploy job，避免競爭
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 讓 Quartz git 功能正常運作
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch Heptabase Data
+        run: node fetchHeptabase.mjs
+        # 無需任何 secret：使用 permissionCheckMode: public
+
+      - name: Build Quartz
+        run: npx quartz build
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Quartz build 輸出到 public/ 目錄
+          path: public
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
