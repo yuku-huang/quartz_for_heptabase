@@ -1,18 +1,22 @@
 ---
 title: "About"
 date: 2024-02-13
-lastmod: 2026-02-21
+lastmod: 2026-02-26
 heptabase_id: d47a1427-3c90-4ce2-9bf3-b7fab60cb05e
 ---
-你好👋🏻，我是黃秉樺 ( 你可以叫我餅乾或是羽空 )。目前還是理工科的大學生，這個網頁是放一些我整理過的一些想法，還有紀錄我生活/生存的過程。
+你好👋🏻，我是黃秉樺 ( 你可以叫我餅乾或是羽空 )，歡迎來到我的部落格。
 
-我會在這裡分享我所感興趣並且學習到的內容，希望對你有所幫助。
+這個網頁會放一些我整理過的一些想法，還有紀錄我生活/生存的過程。我也會分享關於我自己的小故事，希望你能樂在其中並獲得一些啟發。
 
 ---
 
 ### 關於本站
 
+本站基於Heptabase的[白板分享](https://app.heptabase.com/p/whiteboard/946f23a3-75ef-48e3-8e7b-35c2376f2559)，Blog則有兩種樣式，思考脈絡導向的[數字花園](https://heptabase-blog-self.vercel.app/post?note-id=d47a1427-3c90-4ce2-9bf3-b7fab60cb05e&active-note-id=d47a1427-3c90-4ce2-9bf3-b7fab60cb05e)(即時更新) 和 比較像blog的[Quartz](https://yuku-huang.github.io/quartz_for_heptabase/)(12小時更新)
+
 - [[其他/dc4564f8-d8e1-4f96-a6d9-cdac46a35638|故事從這裡開始]]
+
+- [[其他/271f01f0-4dbc-433e-b180-382716670e9b|我對此站的期望]]
 
 - [[其他/ca82336a-6341-465d-a303-869b760a43b2|使用方法]]
 
