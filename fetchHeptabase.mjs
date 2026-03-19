@@ -50,7 +50,7 @@ const BLOG_PUBLIC = path.join(__dirname, '..', 'Heptabase_blog', 'public')
 const BASE_HEADERS = {
     'Accept': 'application/json, text/plain, */*',
     'Content-Type': 'application/json',
-    'heptabase-db-schema-version': '127',
+    'heptabase-db-schema-version': '128',
 }
 
 async function fetchWhiteboardStructure(uuid) {
