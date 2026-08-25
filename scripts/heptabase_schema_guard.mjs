@@ -15,7 +15,7 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const APP_URL = process.env.HEPTABASE_APP_URL || 'https://app.heptabase.com/'
 const API_URL = 'https://api.heptabase.com/v1/collaboration/getAllDataForWhiteboard'
 const WHITEBOARD_UUID = process.env.HEPTABASE_WHITEBOARD_UUID || '946f23a3-75ef-48e3-8e7b-35c2376f2559'
-const DEPLOYED_URL = process.env.BLOG_URL || 'https://heptabase-blog-git-main-yuku-huangs-projects.vercel.app/'
+const DEPLOYED_URL = process.env.BLOG_URL || 'https://heptabase-blog-qf9l.vercel.app/'
 const REQUEST_TIMEOUT_MS = 30_000
 
 const args = new Set(process.argv.slice(2))
