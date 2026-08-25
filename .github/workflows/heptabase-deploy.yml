@@ -13,7 +13,9 @@ on:
       - master
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: write
+  issues: write
   pages: write
   id-token: write
 
@@ -43,6 +45,36 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
+
+      - name: Resolve and apply Heptabase schema
+        id: schema_guard
+        run: node scripts/heptabase_schema_guard.mjs --apply
+
+      - name: Open or reuse schema update PR
+        if: steps.schema_guard.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCHEMA_VERSION: ${{ steps.schema_guard.outputs.schema_version }}
+        run: |
+          set -euo pipefail
+          branch="bot/heptabase-schema-${SCHEMA_VERSION}"
+          existing_pr="$(gh pr list --base main --head "${branch}" --state open --json number --jq '.[0].number')"
+          if [[ -n "${existing_pr}" ]]; then
+            echo "Schema PR #${existing_pr} is already open."
+            exit 0
+          fi
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "${branch}"
+          git add fetchHeptabase.mjs scripts/heptabase_schema_guard.mjs
+          git commit -m "fix(quartz): follow Heptabase schema ${SCHEMA_VERSION}"
+          git push origin "${branch}"
+          gh pr create \
+            --base main \
+            --head "${branch}" \
+            --title "fix(quartz): follow Heptabase schema ${SCHEMA_VERSION}" \
+            --body "Automated schema guard update. The live Heptabase bundle and public API accepted schema ${SCHEMA_VERSION}; only the fetcher schema header was changed."
 
       - name: Fetch Heptabase Data
         run: node fetchHeptabase.mjs
